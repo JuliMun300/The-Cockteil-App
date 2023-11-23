@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 private lateinit var RvCockteil: RecyclerView
 private lateinit var progressBar: ProgressBar
+private lateinit var ViewModel:CockteilViewModel
 
 
 private val ListaCockteils = mutableListOf<Cockteil>(
@@ -54,13 +55,17 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, "${it.Nombre}", Toast.LENGTH_SHORT).show()
         }
 
-        val viewModel: CockteilViewModel = ViewModelProvider(this)[CockteilViewModel::class.java]
+        ViewModel = ViewModelProvider(this)[CockteilViewModel::class.java]
 
-        viewModel.lista.observe(this, Observer {
+        ViewModel.lista.observe(this, Observer {
             adapter.submitList(it)
         })
 
-        viewModel.status.observe(this, Observer {
+        ShowProgressBar()
+
+    }
+    private fun ShowProgressBar(){
+        ViewModel.status.observe(this, Observer {
 
             when (it) {
                 StatusProgress.Loading -> {
@@ -73,4 +78,5 @@ class MainActivity : AppCompatActivity() {
             }
         })
     }
+
 }
