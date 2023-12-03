@@ -1,6 +1,6 @@
 package com.example.thecockteilapp
 
-data class CockteilResponse(val drinks: MutableList<Drinks>)
+data class CocktailResponse(val drinks: MutableList<Drinks>)
 
 data class Drinks(
     val idDrink: String,

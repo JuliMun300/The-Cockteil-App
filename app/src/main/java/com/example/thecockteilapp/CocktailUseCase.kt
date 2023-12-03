@@ -1,9 +1,9 @@
 package com.example.thecockteilapp
 
-class CockteilUseCase {
+class CocktailUseCase {
 
-    fun ParseallCockteils(drinks: MutableList<Drinks>): MutableList<Cockteil>{
-        val listaCockteils = mutableListOf<Cockteil>()
+    fun ParseAllCocktails(drinks: MutableList<Drinks>): MutableList<Cocktail>{
+        val listaCockteils = mutableListOf<Cocktail>()
 
         for(drink in drinks){
             val id = drink.idDrink
@@ -14,11 +14,9 @@ class CockteilUseCase {
             val ingrediente3 = drink.strIngredient3
             val instrucciones = drink.strInstructions
 
-            val cockteil = Cockteil(id,nombre,imagen,ingrediente1,ingrediente2,ingrediente3,instrucciones)
+            val cockteil = Cocktail(id,nombre,imagen,ingrediente1,ingrediente2,ingrediente3,instrucciones)
             listaCockteils.add(cockteil)
-
         }
         return listaCockteils
-
     }
 }

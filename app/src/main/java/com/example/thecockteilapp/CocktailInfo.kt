@@ -1,6 +1,5 @@
 package com.example.thecockteilapp
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
@@ -14,7 +13,7 @@ private lateinit var Ingrediente2: TextView
 private lateinit var Ingrediente3: TextView
 private lateinit var Imagen: ImageView
 
-class CockteilInfo : AppCompatActivity() {
+class CocktailInfo : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cockteil_info)
@@ -26,25 +25,16 @@ class CockteilInfo : AppCompatActivity() {
         Ingrediente3 = findViewById(R.id.textviewIngrediente3)
         Imagen = findViewById(R.id.imageViewCockteil)
 
-
         val bundle = intent.extras
-        val cockteilNombre = bundle?.getString("cockteilnombre")
-        val cockteilInstrucciones = bundle?.getString("cockteilInstrucciones")
-        val ingrediente1 = bundle?.getString("cockteilIngred1")
-        val ingrediente2 = bundle?.getString("cockteilIngred2")
-        val ingrediente3 = bundle?.getString("cockteilIngrediente3")
-        val imagenCockteil = bundle?.getString("cockteilImagen")
+        val cocteil = bundle?.getParcelable<Cocktail>("cocteil")
 
         if (bundle != null) {
-            Nombre.text = cockteilNombre.toString()
-            Instrucciones.text = cockteilInstrucciones.toString()
-            Ingrediente1.text = "Ingredient 1: ${ingrediente1.toString()}"
-            Ingrediente2.text = "Ingredient 2: ${ingrediente2.toString()}"
-            Ingrediente3.text = "Ingredient 3: ${ingrediente3.toString()}"
-            Picasso.get().load(imagenCockteil.toString()).into(Imagen)
+            Nombre.text = cocteil?.Nombre
+            Instrucciones.text = cocteil?.Instrucciones
+            Ingrediente1.text = "Ingredient 1: ${cocteil?.Ingrediente1}"
+            Ingrediente2.text = "Ingredient 2: ${cocteil?.Ingrediente2}"
+            Ingrediente3.text = "Ingredient 3: ${cocteil?.Ingrediente3}"
+            Picasso.get().load(cocteil?.imagen).into(Imagen)
         }
-
-
     }
-
 }

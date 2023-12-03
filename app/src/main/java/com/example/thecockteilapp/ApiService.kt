@@ -4,11 +4,12 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Url
 
 interface ApiService {
 
-    @GET("search.php?s")
-    suspend fun GetCockteilsAll(): Response<CockteilResponse>
+    @GET
+    suspend fun GetCockteilsAll(@Url url:String): Response<CocktailResponse>
 }
 
 private var GetRetrofit =
